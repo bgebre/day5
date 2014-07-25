@@ -10,7 +10,7 @@ $result = mysql_query("SELECT id, title, author, body FROM articles ORDER BY id 
 
 while ($row = mysql_fetch_array($result)){
  ?>
-  <h2><a href="http://33.33.33.40/day5/article.php?id=ID"><?php print $row ['title'];?></a></h2>
+  <h2><a href="http://33.33.33.40/day5/article.php?id=<?php print $row['id'];?>"><?php print $row['title'];?></a></h2>
   <p><em>By:<?php print $row['author'];?></em></p>
   <p><?php print $row['body'];?><p>
 <?php
