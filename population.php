@@ -1,26 +1,22 @@
-<h1>Welcome to Population Data Online</h1>
+<h1>Welcome to My Articles</h1>
 <?php
-// Create connection
-// Can save arguments for mysql_connect() function as variables,
-// or input "manually" into the function.
-// e.g., mysql_connect('website.com', 'Jones', 'un1c0rn')
 $connection = mysql_connect('localhost', 'root', "")
   or die("Unable to connect to $localhost: " . mysql_errno());
 
-// Select database
-$selected_db = mysql_select_db('day5')
-  or die("Unable to select database: 'day5': " . mysql_errno());
+$selected_db = mysql_select_db('banna_log')
+  or die("Unable to select database: 'banna_log': " . mysql_errno());
 
-// SQL Query
-$result = mysql_query("SELECT id, title, author, body FROM articles");
+$result = mysql_query("SELECT id, title, author, body FROM articles ORDER BY id desc");
 
-// Fetch the data from the result
 while ($row = mysql_fetch_array($result)){
-  echo "ID" . $row['id'] . "<br>" ."Title"  . $row['title']  . "<br>" . "Author" .$row['author'] . "<br>". "Body" . $row['body'];
+ ?>
+  <h2><a href="http://33.33.33.40/day5/article.php?id=ID"><?php print $row ['title'];?></a></h2>
+  <p><em>By:<?php print $row['author'];?></em></p>
+  <p><?php print $row['body'];?><p>
+<?php
+
 }
 
-
-// Close connection
 mysql_close($connection);
 ?>
 
